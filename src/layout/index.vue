@@ -1,9 +1,9 @@
 <template>
-	<section class="w-screen h-screen flex flex-col">
+	<section class="w-screen">
 		<AppHeader />
-		<main class="w-full grow">
-      <router-view />
-    </main>
+		<main class="w-full">
+			<router-view />
+		</main>
 		<AppFooter />
 	</section>
 </template>
@@ -13,4 +13,3 @@ import AppHeader from './AppHeader.vue'
 import AppFooter from './AppFooter.vue'
 </script>
 
-<style scoped></style>
