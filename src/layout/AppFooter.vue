@@ -1,6 +1,6 @@
 <template>
-  <footer class="h-16 w-full bg-[#3a454b] text-white flex box-border px-8 text-xl py-2">
-    This is AppFooter
+  <footer class="h-24 w-full bg-[#164a0b] text-white flex box-border px-8 text-base py-2 justify-center items-center">
+    T2TEpiGenoDB &copy; 2023-2023
   </footer>
 </template>
 
@@ -8,6 +8,4 @@
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
