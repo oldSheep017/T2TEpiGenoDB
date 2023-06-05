@@ -30,7 +30,7 @@ const route = useRoute()
 const activeRouteName = ref('Home')
 const showMenu = ref(false)
 
-const menuList = ['Home', 'Search', 'Browse', 'Download', 'Contact', 'Help']
+const menuList = ['Home', 'Search', 'Browse', 'Download', 'Help']
 
 const toggleMenuList = () => {
 	showMenu.value = !showMenu.value
