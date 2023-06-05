@@ -1,4 +1,4 @@
-# CGGE
+# T2TEpiGenoDB
 
 ## Brief Introduction
 
