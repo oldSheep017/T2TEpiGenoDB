@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.font-newroman {
+  font-family: 'Times New Roman', Times, serif;
+}
+
 @font-face {
   font-family: "cgge"; /* Project id 4096748 */
   src: url('//at.alicdn.com/t/c/font_4096748_g4yimhmcaj.woff2?t=1685551004545') format('woff2'),
