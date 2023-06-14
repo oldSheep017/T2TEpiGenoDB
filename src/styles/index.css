@@ -6,12 +6,24 @@
   font-family: 'Times New Roman', Times, serif;
 }
 
+.font-queensides {
+  font-family: 'Queensides';
+}
+
+.font-sparkystone {
+  font-family: 'sparkystones';
+}
+
+.font-brussels {
+  font-family: 'brussels';
+}
+
 @font-face {
   font-family: "cgge"; /* Project id 4096748 */
-  src: url('//at.alicdn.com/t/c/font_4096748_g4yimhmcaj.woff2?t=1685551004545') format('woff2'),
-       url('//at.alicdn.com/t/c/font_4096748_g4yimhmcaj.woff?t=1685551004545') format('woff'),
-       url('//at.alicdn.com/t/c/font_4096748_g4yimhmcaj.ttf?t=1685551004545') format('truetype'),
-       url('//at.alicdn.com/t/c/font_4096748_g4yimhmcaj.svg?t=1685551004545#cgge') format('svg');
+  src: url('//at.alicdn.com/t/c/font_4096748_2rkmcnhuh96.woff2?t=1686626196413') format('woff2'),
+       url('//at.alicdn.com/t/c/font_4096748_2rkmcnhuh96.woff?t=1686626196413') format('woff'),
+       url('//at.alicdn.com/t/c/font_4096748_2rkmcnhuh96.ttf?t=1686626196413') format('truetype'),
+       url('//at.alicdn.com/t/c/font_4096748_2rkmcnhuh96.svg?t=1686626196413#cgge') format('svg');
 }
 
 .cgge {
@@ -20,6 +32,14 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.cgge-analysis:before {
+  content: "\e615";
+}
+
+.cgge-arrow-up:before {
+  content: "\e688";
 }
 
 .cgge-menu:before {
