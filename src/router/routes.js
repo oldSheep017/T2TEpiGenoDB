@@ -1,6 +1,7 @@
 import Layout from '../layout/index.vue'
 import Home from '../views/home'
 import Search from '../views/search'
+import Analysis from '../views/analysis'
 import Browse from '../views/browse'
 import Download from '../views/download'
 import Contact from '../views/contact'
@@ -20,6 +21,11 @@ const routes = [
 				path: 'search',
 				name: 'Search',
 				component: Search
+			},
+			{
+				path: 'analysis',
+				name: 'Analysis',
+				component: Analysis
 			},
 			{
 				path: 'browse',
