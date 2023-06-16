@@ -19,9 +19,16 @@
         </div>
         <div>2</div>
         <div>
-          <BarChart title="The number of biotype in CHM13" class=" scale-110" :data="biotype" />
+          <BarChart title="The number of biotype in CHM13" class=" scale-110" :data="biotype_chm13" />
         </div>
-        <div>4</div>
+        <div class="flex">
+          <div class=" grow h-full">
+              <PieChart title="CHM13" :data="biotype_chm13_pie" />
+          </div>
+          <div class=" grow h-full">
+            <PieChart title="GRCH38" :data="biotype_grch38_pie" />
+          </div>
+        </div>
       </div>
     </section>
 
@@ -62,9 +69,10 @@
 </template>
 
 <script setup>
-import { onMounted, ref, reactive } from 'vue';
+import { ref, reactive, computed } from 'vue';
 import { useRoute } from 'vue-router'
 import BarChart from '../../components/BarChart'
+import PieChart from '../../components/PieChart'
 import DataTable from '../../components/DataTable'
 import http from '../../utils/http'
 defineOptions({
@@ -77,7 +85,22 @@ const loading = ref(true)
 const genes = ref([])
 const histone = ref([])
 const variation = ref([])
-const biotype = ref({})
+const biotype_chm13 = ref({})
+const biotype_grch38 = ref({})
+
+const biotype_chm13_pie = computed(() => {
+  const biotypeChm13KeyValue = Object.entries(biotype_chm13.value)
+  return biotypeChm13KeyValue.map(item => { 
+    return { name: item[0], value: item[1] }
+  })
+})
+const biotype_grch38_pie = computed(() => {
+  const biotypeGrch38KeyValue = Object.entries(biotype_grch38.value)
+  return biotypeGrch38KeyValue.map(item => {
+    return { name: item[0], value: item[1] }
+  })
+})
+
 const basicSearchInfo = reactive({
   chromosome: '',
   start: '',
@@ -94,9 +117,9 @@ http.get(`/gene/locus?chromosome=${route.query.chromosome}&start=${route.query.s
     genes.value = res.data.genes
     histone.value = res.data.histone
     variation.value = res.data.variation
-    biotype.value = res.data.biotype
+    biotype_chm13.value = res.data.biotype_chm13
+    biotype_grch38.value = res.data.biotype_grch38
     loading.value = false
-    console.log({ genes: genes.value, histone: histone.value, variation: variation.value, biotype: biotype.value })
   })
 </script>
 
@@ -104,32 +127,4 @@ http.get(`/gene/locus?chromosome=${route.query.chromosome}&start=${route.query.s
 .section-title {
   @apply text-3xl flex my-3;
 }
-
-/* 
-table,
-tr,
-td,
-th {
-  @apply box-border border border-slate-400;
-}
-
-table {
-  width: 100%;
-}
-
-tr {
-  @apply h-9;
-}
-
-th {
-  @apply bg-slate-100;
-}
-
-td, th {
-  @apply h-full text-center;
-}
-
-td:hover {
-  background-color: #eee;
-} */
 </style>
