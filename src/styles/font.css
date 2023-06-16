@@ -12,3 +12,8 @@
   font-family: 'brussels';
   src: url('../assets/fonts/BrusselsCityPersonalUsed-L3Lon.otf');
 }
+
+@font-face {
+  font-family: 'chalkboard';
+  src: url('../assets/fonts/Chalkboard-SE-2.ttf');
+}

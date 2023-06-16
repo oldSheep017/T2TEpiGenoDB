@@ -18,6 +18,10 @@
   font-family: 'brussels';
 }
 
+.font-chalkboard {
+  font-family: 'chalkboard';
+}
+
 @font-face {
   font-family: "cgge"; /* Project id 4096748 */
   src: url('//at.alicdn.com/t/c/font_4096748_2rkmcnhuh96.woff2?t=1686626196413') format('woff2'),
