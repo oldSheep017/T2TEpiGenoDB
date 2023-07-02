@@ -32,7 +32,7 @@
 
       <!-- pagination -->
       <div>
-        <Pagination />
+        <Pagination @change="handlePageChange" :page="page" :count="pageCount"  />
       </div>
     </footer>
 
@@ -40,7 +40,7 @@
 </template>
 
 <script setup>
-import { computed, reactive } from 'vue'
+import { computed, ref } from 'vue'
 import Pagination from '../Pagination'
 defineOptions({
   name: 'DataTable'
@@ -51,13 +51,15 @@ const props = defineProps({
     default: []
   }
 })
-const attr = reactive({
-  page: 0,
-  pageSize: 10
-})
 const data = computed(() => props.tableData)
-
 const head = computed(() => props.tableData[0] ? Object.keys(props.tableData[0]) : [])
+const page = ref(1)
+const pageCount = computed(() => Math.ceil(data / pageSize))
+const pageSize = ref(10)
+
+const handlePageChange = (num) => {
+  page.value = num
+}
 
 
 </script>
