@@ -3,7 +3,7 @@
     <!-- Introduction -->
     <div class="py-8 flex flex-col h-auto w-full box-border md:px-32 xl:px-72 px-12 bg-[#165f0b] text-white">
       <h1 class="my-3 text-6xl font-semibold font-newroman">Introduction</h1>
-      <p class="font-medium text-xl font-chalkboard indent-4 my-2 leading-[1.6]">
+      <p class="font-medium text-xl font-newroman indent-4 my-2 leading-[1.6]">
         With the rapid advancement and widespread application of genome sequencing technologies in recent years, the
         unveiling of the human Telomere-to-Telomere (T2T) genome has been closely followed by the release of T2T genomes
         from various other flora and fauna. These novel, high-quality genome data provide us with a unique perspective to
@@ -13,7 +13,7 @@
         unveiling new information concealed within genomes but also grants us a fresh lens to comprehend genome structure
         and function.
       </p>
-      <p class="font-medium text-xl font-chalkboard indent-4 my-2 leading-[1.6]">
+      <p class="font-medium text-xl font-newroman indent-4 my-2 leading-[1.6]">
         We have developed a new database, "T2TEpiGenoDB", which consolidates and exhibits our genetic and epigenetic
         analysis results of the new genomic regions derived from the comparative analysis. Within T2TEpiGenoDB, users can
         retrieve the new regions of each species and their corresponding genetic and epigenetic features, providing vital
@@ -25,7 +25,7 @@
         such as the frequency and correlation of genes and transcription factors in the new regions, offering vital
         references for further research and interpretation of the new regions.
       </p>
-      <p class="font-medium text-xl font-chalkboard indent-4 my-2 leading-[1.6]">
+      <p class="font-medium text-xl font-newroman indent-4 my-2 leading-[1.6]">
         In summary, T2TEpiGenoDB provides a convenient platform for researchers to access and analyze new gene regions and
         their associated genetic and epigenetic characteristics. We anticipate that T2TEpiGenoDB will aid researchers in
         revealing the crucial roles these new regions play in biological function and disease genesis and progression.
