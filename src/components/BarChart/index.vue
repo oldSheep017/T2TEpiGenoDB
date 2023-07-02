@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full h-full" id="barChart"></section>
+  <section class="w-full h-full" :id="id"></section>
 </template>
 
 <script setup>
@@ -8,6 +8,9 @@ import { onMounted, ref, watch } from 'vue'
 defineOptions({
   name: 'BarChart'
 })
+
+const id = 'barChart' + Math.random().toString(32).slice(3, 5)
+
 const props = defineProps({
   title: String,
   data: Object
@@ -74,7 +77,7 @@ watch(() => props.data, (newValue, oldValue) => {
 })
 
 onMounted(() => {
-  chart.value = echarts.init(document.getElementById('barChart'))
+  chart.value = echarts.init(document.getElementById(id))
   chart.value.showLoading()
 })
 </script>
