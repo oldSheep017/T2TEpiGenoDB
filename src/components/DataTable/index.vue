@@ -6,7 +6,7 @@
           <th>{{ h }}</th>
         </template>
       </tr>
-      <template v-for="d in data">
+      <template v-for="d in currentPageData">
         <tr>
           <template v-for="h in head">
             <td>{{ d[h] }}</td>
@@ -20,7 +20,7 @@
       <div class="w-auto h-10">
         <span>Show</span>
         <span class="mx-2">
-          <select v-model="attr.pageSize" class="box-border border border-slate-400 rounded-sm px-2 py-1">
+          <select v-model="pageSize" @change="handlePageSizeChange" class="box-border border border-slate-400 rounded-sm px-2 py-1">
             <option :value="10">10</option>
             <option :value="25">25</option>
             <option :value="50">50</option>
@@ -32,7 +32,7 @@
 
       <!-- pagination -->
       <div>
-        <Pagination @change="handlePageChange" :page="page" :count="pageCount"  />
+        <Pagination @change="handlePageChange" :page="page" :count="pageCount" />
       </div>
     </footer>
 
@@ -40,7 +40,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import Pagination from '../Pagination'
 defineOptions({
   name: 'DataTable'
@@ -49,19 +49,21 @@ const props = defineProps({
   tableData: {
     type: Array,
     default: []
-  }
+  },
 })
 const data = computed(() => props.tableData)
 const head = computed(() => props.tableData[0] ? Object.keys(props.tableData[0]) : [])
 const page = ref(1)
-const pageCount = computed(() => Math.ceil(data / pageSize))
+const pageCount = computed(() => Math.ceil(data.value.length / pageSize.value))
 const pageSize = ref(10)
 
 const handlePageChange = (num) => {
   page.value = num
 }
 
+console.log(data.value.length)
 
+const currentPageData = computed(() => data.value.slice(pageSize.value * (page.value - 1), pageSize.value * page.value))
 </script>
 
 <style scoped>
