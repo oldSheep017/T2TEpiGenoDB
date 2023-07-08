@@ -6,6 +6,7 @@ import Browse from '../views/browse'
 import Download from '../views/download'
 import Contact from '../views/contact'
 import Help from '../views/help'
+import Study from '../views/study'
 
 const routes = [
 	{
@@ -47,6 +48,11 @@ const routes = [
 				name: 'Help',
 				component: Help
 			},
+			{
+				path: 'study',
+				name: 'Study',
+				component: Study
+			}
 		],
 	},
 ]
