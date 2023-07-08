@@ -13,5 +13,17 @@ export default defineConfig({
   server: {
     host: 'localhost',
     port: 3000
+  },
+  build: {
+    outDir: './dist/',
+    brotliSize: false,
+    sourcemap: false,
+    minify: "terser",
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+    }
   }
 })
