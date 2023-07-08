@@ -1,6 +1,7 @@
 <template>
   <section class="flex h-10 w-max box-border border border-gray-400 my-2">
     <div
+      :class="{'disabled': page === 1}"
       class="flex justify-center items-center text-sm border-r border-gray-400 px-2 cursor-pointer transition-colors hover:bg-[#165f0b] hover:text-white"
       @click="prev">Previous</div>
     <template v-for="i in count">
@@ -9,6 +10,7 @@
         @click="changePage(i)">{{ i }}</div>
     </template>
     <div
+      :class="{'disabled': page === count}"
       class="flex justify-center items-center text-sm px-2 cursor-pointer transition-colors hover:bg-[#165f0b] hover:text-white"
       @click="next">Next</div>
   </section>
@@ -32,6 +34,9 @@ const page = computed(() => props.page)
 const count = computed(() => props.count)
 
 
+// const prevClass = { 'disabled': page.value === 1 }
+// const nextClass = { 'disabled': page.value === count.value }
+
 const prev = () => {
   if (page.value == 1) {
     return 0
@@ -51,6 +56,20 @@ const next = () => {
 }
 </script>
 
-<style scoped>.active {
+<style scoped>
+.active {
   @apply bg-[#165f0b] text-white;
-}</style>
+}
+
+.disabled {
+  color: #ddd;
+  border-color: #ccc;
+  cursor:no-drop;
+  user-select: none;
+}
+
+.disabled:hover {
+  background-color: #fff;
+  color: #ccc;
+}
+</style>

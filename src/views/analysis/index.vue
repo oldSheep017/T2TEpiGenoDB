@@ -17,13 +17,14 @@
             <span class=" border-b border-slate-300 p-3">{{ basicSearchInfo.end }}</span>
           </div>
         </div>
+        <!-- TODO: A Pie Chart -->
         <div>2</div>
         <div>
           <BarChart title="The number of biotype in CHM13" class=" scale-110" :data="biotype_chm13" />
         </div>
         <div class="flex">
           <div class=" grow h-full">
-              <PieChart title="CHM13" :data="biotype_chm13_pie" />
+            <PieChart title="CHM13" :data="biotype_chm13_pie" />
           </div>
           <div class=" grow h-full">
             <PieChart title="GRCH38" :data="biotype_grch38_pie" />
@@ -38,7 +39,9 @@
         New gap genes overlap with the genomic region
       </div>
       <div class="w-full h-auto border box-border border-slate-500 overflow-y-auto">
-        <DataTable :table-data="genes" />
+        <DataTable :table-data="genes" has-element v-slot="scope">
+          <div class="cursor-pointer text-blue-500 hover:underline" @click="browseChromosome(scope.row)">view</div>
+        </DataTable>
       </div>
     </section>
 
@@ -70,7 +73,7 @@
 
 <script setup>
 import { ref, reactive, computed } from 'vue';
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import BarChart from '../../components/BarChart'
 import PieChart from '../../components/PieChart'
 import DataTable from '../../components/DataTable'
@@ -80,6 +83,7 @@ defineOptions({
 })
 
 const route = useRoute()
+const router = useRouter()
 
 const loading = ref(true)
 const genes = ref([])
@@ -90,7 +94,7 @@ const biotype_grch38 = ref({})
 
 const biotype_chm13_pie = computed(() => {
   const biotypeChm13KeyValue = Object.entries(biotype_chm13.value)
-  return biotypeChm13KeyValue.map(item => { 
+  return biotypeChm13KeyValue.map(item => {
     return { name: item[0], value: item[1] }
   })
 })
@@ -107,6 +111,10 @@ const basicSearchInfo = reactive({
   end: ''
 })
 
+const browseChromosome = (row) => {
+  router.push({ name: 'Browse' })
+}
+
 // init basic search information
 basicSearchInfo.chromosome = route.query.chromosome
 basicSearchInfo.start = route.query.start
@@ -121,6 +129,7 @@ http.get(`/gene/locus?chromosome=${route.query.chromosome}&start=${route.query.s
     biotype_grch38.value = res.data.biotype_grch38
     loading.value = false
   })
+
 </script>
 
 <style scoped>
