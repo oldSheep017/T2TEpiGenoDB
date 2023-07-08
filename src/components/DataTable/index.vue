@@ -5,11 +5,19 @@
         <template v-for="h in head">
           <th>{{ h }}</th>
         </template>
+        <template v-if="hasElement">
+          <th>Browse</th>
+        </template>
       </tr>
       <template v-for="d in currentPageData">
         <tr>
           <template v-for="h in head">
-            <td>{{ d[h] }}</td>
+            <td>{{ isNoMeaningData(d[h]) ? '-' : d[h] }}</td>
+          </template>
+          <template v-if="hasElement">
+            <td>
+              <slot :row="d" />
+            </td>
           </template>
         </tr>
       </template>
@@ -50,6 +58,10 @@ const props = defineProps({
     type: Array,
     default: []
   },
+  hasElement: {
+    type: Boolean,
+    default: false
+  }
 })
 const data = computed(() => props.tableData)
 const head = computed(() => props.tableData[0] ? Object.keys(props.tableData[0]) : [])
@@ -61,9 +73,12 @@ const handlePageChange = (num) => {
   page.value = num
 }
 
-console.log(data.value.length)
-
 const currentPageData = computed(() => data.value.slice(pageSize.value * (page.value - 1), pageSize.value * page.value))
+
+const isNoMeaningData = (char) => {
+  const meaninglessCharacters = ['.', ',', '/', '\\', '(', ')', '{', '}', '<', '>', '']
+  return char.length < 2 && meaninglessCharacters.includes(char)
+}
 </script>
 
 <style scoped>
