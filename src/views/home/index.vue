@@ -35,9 +35,9 @@
     <div class="bg-white md:px-32 xl:px-72 px-12 box-border md:min-w-full">
       <div class="w-full border-b border-gray-300 text-4xl font-semibold py-5">Quick Start</div>
       <div class="w-full bg-white grid grid-cols-3 md:grid-cols-6 gap-2 py-8 hover:cursor-pointer">
-        <template v-for="(name, index) in fields" :key="index">
+        <template v-for="name in fields" :key="name">
           <!-- Quick Navigation -->
-          <div
+          <div @click="viewStudy(name)"
             class="w-full h-48 border border-gray-200 shadow-md hover:shadow-xl hover:translate-y-[-12px] flex flex-col items-center transition-all justify-center gap-4 rounded-sm quick-nav">
             <img :src="getQuickIcon(name)" alt="quickicon" class="w-16 h-16 transition-all" />
             <span class="text-black text-xl transition-all">{{ name }}</span>
@@ -76,9 +76,15 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const fields = ['Human', 'Rice', 'Arabidopsis']
 const getQuickIcon = (name) => {
   return `https://young-1306090592.cos.ap-guangzhou.myqcloud.com/cgge/${name.toLowerCase()}.png`
+}
+
+const viewStudy = (species) => {
+  router.push({ name: 'Study', query: { species } })
 }
 
 </script>
